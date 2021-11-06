@@ -1,0 +1,39 @@
+:root {
+    --primary-color: #ffde00;
+    --secondary-color: #3b4cca;
+    --red: #cc0000;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  .header {
+    display: flex;
+    height: 75px;
+    background-color: #cc0000;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .pokeball {
+      height: 75px;
+  }
+
+  .logo {
+    margin-left: 30px;
+    color: #ffde00;
+    align-items: center;
+  }
+  
+  #pokedex-style {
+    display: flex;
+    color: #ffde00;
+    background-color: #3b4cca;
+    padding: 12px 16px;
+    margin-top: 15px;
+    max-width: 250px;
+    font-weight: bold;
+    border-radius: 50px;
+  }
