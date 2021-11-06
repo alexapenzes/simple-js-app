@@ -11,20 +11,22 @@
   
   .header {
     display: flex;
-    height: 75px;
+    height: 100px;
     background-color: #cc0000;
     align-items: center;
     margin-bottom: 20px;
+    justify-content: center;
   }
   
-  .pokeball {
+  #pokeball {
       height: 75px;
+      align-content: center;
+      align-items: center;
   }
 
-  .logo {
+  .logo, h2 {
     margin-left: 30px;
     color: #ffde00;
-    align-items: center;
   }
   
   #pokedex-style {
