@@ -31,10 +31,6 @@ let pokemonList = [
     },
 ];
 
-for (let i = 0; i < pokemonList.length; i++){
-    document.write('<p id="pokedex-style">' + pokemonList[i].name + ' (height: ' + pokemonList[i].height +'m)' + '</p>');
-
-    if(pokemonList[i].height > 1){
-        document.write(' - Wow, that\'s big!')
-    }
-}
+pokemonList.forEach(function(pokemon) {
+    document.write('<p id="pokedex-style">' + pokemon.name + ' ' + 'Height: ' + pokemon.height + 'm' + '</p>');
+});
