@@ -42,13 +42,31 @@ let pokemonRepository = (function () {
         pokemonList.push(pokemon);
     }
 
+    function addListItem(pokemon){
+        let listContainer = document.querySelector('.pokemon-list');
+        let listPokemon = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerText = pokemon.name;
+        button.classList.add('button-class');
+        listPokemon.appendChild(button);
+        listContainer.appendChild(listPokemon);
+        button.addEventListener('click', function () {
+            showDetails(pokemon);
+        });
+    }
+
+    function showDetails(pokemon){
+        console.log(pokemon);
+    }
+
     return {
         getAll: getAll,
-        add: add
+        add: add,
+        addListItem: addListItem
     };
 })();
 
 //write all pokemon with its infos
-pokemonRepository.getAll().forEach(function(pokemon) {
-    document.write('<p class="pokedex-style">' + pokemon.name + '<br>' + 'Height: ' + pokemon.height + 'm<br>' + 'Types: ' + pokemon.types + '</p>');
+pokemonRepository.getAll().forEach(function (pokemon) {
+   pokemonRepository.addListItem(pokemon);
 });
