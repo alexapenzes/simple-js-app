@@ -5,6 +5,7 @@ let pokemonRepository = (function () {
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=333';
     //let modalContainer = document.querySelector('#modal-container');
 
+    //adds pokemon to array
     function add(pokemon) {
         if (
             typeof pokemon === "object" &&
@@ -135,13 +136,48 @@ let pokemonRepository = (function () {
     modalBody.append(abilitiesElement);
   }
 
+      // search function 
+      let filter = document.querySelector('#searchBar');
+      let noResults = document.createElement('h3');
+      noResults.innerText = 'No Pokémon found.';
+    
+      filter.addEventListener('input', () => {
+    
+        let list = document.querySelector('.pokemon-list');
+    
+        let value = filter.value.toLowerCase();
+        listItems = list.getElementsByTagName('li');
+        let isPokemonFound = false; // Help to control the no result message 
+    
+        for (let i = 0; i < listItems.length; i++) {
+          let button = listItems[i].getElementsByTagName('button')[0];
+          let pokemon = button.textContent || button.innerText;
+    
+          if (pokemon.toLowerCase().indexOf(value) > -1) {
+            listItems[i].style.display = "";
+            isPokemonFound = true;
+          } else {
+            listItems[i].style.display = "none";
+          }
+        }
+    
+        if (!isPokemonFound) {
+          list.appendChild(noResults);
+        }
+    
+        if (list.contains(noResults) && isPokemonFound) {
+          list.removeChild(noResults)
+        }
+      });
+
     return {
         add: add,
         getAll: getAll,
         addListItem: addListItem,
         loadList: loadList,
         loadDetails: loadDetails,
-        showModal: showModal
+        showModal: showModal,
+        showDetails: showDetails
     };
 })();
 
