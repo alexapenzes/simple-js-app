@@ -1,24 +1,24 @@
 //IIFE function
 let pokemonRepository = (function () {
-    //list of pokemon Array
-    let pokemonList = [];
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=333';
-    //let modalContainer = document.querySelector('#modal-container');
+  //list of pokemon Array
+  let pokemonList = [];
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=333";
+  //let modalContainer = document.querySelector('#modal-container');
 
-    //adds pokemon to array
-    function add(pokemon) {
-        if (
-            typeof pokemon === "object" &&
-            "name" in pokemon &&
-            "detailsUrl" in pokemon
-        ) {
-            pokemonList.push(pokemon);
-        } else {
-            console.log("pokemon is not correct");
-        }
+  //adds pokemon to array
+  function add(pokemon) {
+    if (
+      typeof pokemon === "object" &&
+      "name" in pokemon &&
+      "detailsUrl" in pokemon
+    ) {
+      pokemonList.push(pokemon);
+    } else {
+      console.log("pokemon is not correct");
     }
-    function getAll() {
-      return pokemonList;
+  }
+  function getAll() {
+    return pokemonList;
   }
   function addListItem(pokemon) {
     pokemonRepository.loadDetails(pokemon).then(function () {
@@ -125,7 +125,9 @@ let pokemonRepository = (function () {
     // //creating element for type in modal content
     let typesElement = $("<p>" + "types : " + pokemon.types + "</p>");
     // //creating element for abilities in modal content
-    let abilitiesElement = $("<p>" + "abilities : " + pokemon.abilities + "</p>");
+    let abilitiesElement = $(
+      "<p>" + "abilities : " + pokemon.abilities + "</p>"
+    );
 
     modalTitle.append(nameElement);
     modalBody.append(imageElementFront);
@@ -136,17 +138,17 @@ let pokemonRepository = (function () {
     modalBody.append(abilitiesElement);
   }
 
-      // search function 
-      let filter = document.querySelector('#searchBar');
+  // search function
+  /*  let filter = document.querySelector('#searchBar');
       let noResults = document.createElement('h3');
       noResults.innerText = 'No Pokémon found.';
     
       filter.addEventListener('input', () => {
     
-        let list = document.querySelector('.pokemon-list');
+        let list = document.querySelector('.row');
     
         let value = filter.value.toLowerCase();
-        listItems = list.getElementsByTagName('li');
+        let listItems = list.getElementsByTagName('div');
         let isPokemonFound = false; // Help to control the no result message 
     
         for (let i = 0; i < listItems.length; i++) {
@@ -168,23 +170,22 @@ let pokemonRepository = (function () {
         if (list.contains(noResults) && isPokemonFound) {
           list.removeChild(noResults)
         }
-      });
+      });*/
 
-    return {
-        add: add,
-        getAll: getAll,
-        addListItem: addListItem,
-        loadList: loadList,
-        loadDetails: loadDetails,
-        showModal: showModal,
-        showDetails: showDetails
-    };
+  return {
+    add: add,
+    getAll: getAll,
+    addListItem: addListItem,
+    loadList: loadList,
+    loadDetails: loadDetails,
+    showModal: showModal,
+    showDetails: showDetails,
+  };
 })();
 
-pokemonRepository.loadList().then(function() {
-    // Now the data is loaded!
-    pokemonRepository.getAll().forEach(function(pokemon){
-      pokemonRepository.addListItem(pokemon);
-    });
+pokemonRepository.loadList().then(function () {
+  // Now the data is loaded!
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
   });
-
+});
