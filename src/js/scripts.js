@@ -139,7 +139,7 @@ let pokemonRepository = (function () {
   }
 
   // search function
-  /*  let filter = document.querySelector('#searchBar');
+    let filter = document.querySelector('#searchBar');
       let noResults = document.createElement('h3');
       noResults.innerText = 'No Pokémon found.';
     
@@ -152,8 +152,9 @@ let pokemonRepository = (function () {
         let isPokemonFound = false; // Help to control the no result message 
     
         for (let i = 0; i < listItems.length; i++) {
-          let button = listItems[i].getElementsByTagName('button')[0];
-          let pokemon = button.textContent || button.innerText;
+          let title = listItems[i].getElementsByTagName('h4')[0];
+          let pokemon = title.textContent || title.innerText;
+
     
           if (pokemon.toLowerCase().indexOf(value) > -1) {
             listItems[i].style.display = "";
@@ -170,7 +171,7 @@ let pokemonRepository = (function () {
         if (list.contains(noResults) && isPokemonFound) {
           list.removeChild(noResults)
         }
-      });*/
+      });
 
   return {
     add: add,
